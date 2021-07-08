@@ -1,0 +1,4 @@
+mkfile 1M dummyfile1.bin
+mkfile 1M dummyfile2.bin
+mkfile 1M dummyfile3.bin
+
