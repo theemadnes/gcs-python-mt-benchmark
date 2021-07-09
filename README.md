@@ -1,6 +1,10 @@
 # gcs-python-mt-benchmark
 Compare performance between serial transfers, multi-threaded transfers, and multi-process transfers using the Python GCS client
 
+#### Setup
+
+Basically, just run this in a `venv` and create a `.env` file that specifies a GCS bucket. This also assumes that you have already authenticated to `gcloud`.
+
 #### Examples
 
 Serial:
