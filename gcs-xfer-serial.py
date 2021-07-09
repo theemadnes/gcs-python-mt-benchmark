@@ -30,15 +30,17 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
         )
     )
 
-start_time = time.time()
-time_prefix = str(int(time.time()))
-dummy_files = ["dummyfile1.bin", "dummyfile2.bin", "dummyfile3.bin"]
+if __name__ == '__main__':
 
-for file in dummy_files:
+    start_time = time.time()
+    time_prefix = str(int(time.time()))
+    dummy_files = ["dummyfile1.bin", "dummyfile2.bin", "dummyfile3.bin"]
 
-    print("uploading " + file)
-    upload_blob(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file)
+    for file in dummy_files:
+
+        print("uploading " + file)
+        upload_blob(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file)
 
 
-execution_time = (time.time() - start_time)
-print('Execution time in seconds: ' + str(execution_time))
+    execution_time = (time.time() - start_time)
+    print('Execution time in seconds: ' + str(execution_time))

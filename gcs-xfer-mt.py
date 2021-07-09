@@ -31,31 +31,33 @@ def upload_blob(bucket_name, source_file_name, destination_blob_name):
         )
     )
 
-start_time = time.time()
-time_prefix = str(int(time.time()))
-dummy_files = ["dummyfile1.bin", "dummyfile2.bin", "dummyfile3.bin"]
+if __name__ == '__main__':
 
-threads = list()
+    start_time = time.time()
+    time_prefix = str(int(time.time()))
+    dummy_files = ["dummyfile1.bin", "dummyfile2.bin", "dummyfile3.bin"]
 
-for file in dummy_files:
+    threads = list()
 
-    print("uploading " + file)
-    #upload_blob(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file)
-    x = threading.Thread(target=upload_blob, args=(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file))
-    threads.append(x)
-    #x.start()
-    #x.join()
+    for file in dummy_files:
 
-# start threads
-for x in threads:
+        print("uploading " + file)
+        #upload_blob(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file)
+        x = threading.Thread(target=upload_blob, args=(os.environ.get('BUCKET_NAME'), file, time_prefix+'/'+file))
+        threads.append(x)
+        #x.start()
+        #x.join()
 
-    x.start()
+    # start threads
+    for x in threads:
 
-# join threads
-for x in threads:
+        x.start()
 
-    x.join()
+    # join threads
+    for x in threads:
+
+        x.join()
 
 
-execution_time = (time.time() - start_time)
-print('Execution time in seconds: ' + str(execution_time))
+    execution_time = (time.time() - start_time)
+    print('Execution time in seconds: ' + str(execution_time))
